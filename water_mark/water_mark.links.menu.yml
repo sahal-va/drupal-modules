@@ -1,0 +1,6 @@
+water_mark.water_mark_settings_form:
+  title: 'Watermark Settings'
+  route_name: water_mark.water_mark_settings_form
+  description: 'Configure watermark settings.'
+  parent: system.admin_config_system
+  weight: 99

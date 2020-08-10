@@ -1,0 +1,11 @@
+water_mark_library:
+  version: 1.x
+  css:
+    theme:
+      css/water_mark.css: {}
+  js:
+    js/water_mark.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.dialog.ajax
+    - core/jquery.form'

@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Contains water_mark.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Url;
+use Drupal\water_mark\WaterMark;
+
+/**
+ * Implements hook_help().
+ */
+function water_mark_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the water_mark module.
+    case 'help.page.water_mark':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_image_formatter().
+ * Display water marked image independed on image style.
+ */
+function water_mark_preprocess_image_formatter(&$variables) {
+  if ($variables['image']) {
+    $watermark = new WaterMark();
+    $uri = $watermark->createfromUri($variables['image']['#uri']);
+    if ($uri) {
+      $variables['image']['#uri'] = $uri;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function water_mark_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  $url = Url::fromRoute('water_mark.water_mark_settings_form');
+  if ($route_name == 'entity.user.canonical') {
+    $data['tabs'][0]['water_mark.settings'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => t('Configure Watermark'),
+        'url' => $url,
+        'localized_options' => [
+          'attributes' => [
+            'title' => t('Configure Watermark Settings'),
+          ],
+        ],
+      ],
+    ];
+
+    $cacheability
+      ->addCacheTags([
+        'user.permissions',
+      ]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function water_mark_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] =  'water_mark/water_mark_library';
+}

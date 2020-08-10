@@ -1,0 +1,9 @@
+water_mark.water_mark_settings_form:
+  path: '/admin/config/water_mark/watermarksettings'
+  defaults:
+    _form: '\Drupal\water_mark\Form\WaterMarkSettingsForm'
+    _title: 'Configure Watermark Settings'
+  requirements:
+    _role: 'authenticated'
+  options:
+    _admin_route: TRUE

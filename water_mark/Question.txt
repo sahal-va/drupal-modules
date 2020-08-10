@@ -1,0 +1,15 @@
+Create a custom module in Drupal 8 that will add Image or text watermark to all the images on the website.
+Admin user should have access to select whether an Image watermark or Text watermark has to be added.
+If the image watermark is selected, the admin user should have access to select the image that should be added as a watermark.
+If text watermark is selected, the admin user should have access to add his custom text that should be added as a watermark.
+The added watermark should be added as an overlay to all the images on the website.
+
+Also, an authenticated user will have access to his configuration page where he can select an image or text watermark.
+If the authenticated user adds a watermark, then his watermark will be added for all the images on the website when he is accessing the website.
+This selection will not affect other authenticated or anonymous users on the website.
+
+
+Eg:- If Admin adds image overlay with image xyz.jpg. All the images on the website will have xyz.jpg as a watermark.
+If user X, adds image overlay abc.jpg. All the images on the website will have abc.jpg as a watermark (only for user X).
+If user Y, access the website. He/She will see xyz.jpg as the watermark (admins selection as default).
+If user Z, add text overlay as "TEST". All the images on the website will have TEST as a watermark (only for user Z).

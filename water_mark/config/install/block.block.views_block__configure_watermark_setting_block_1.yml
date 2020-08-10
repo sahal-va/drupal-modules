@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.configure_watermark_setting
+  module:
+    - views
+  theme:
+    - bartik
+enforced:
+  module:
+    - water_mark
+id: views_block__configure_watermark_setting_block_1
+theme: bartik
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:configure_watermark_setting-block_1'
+settings:
+  id: 'views_block:configure_watermark_setting-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }
