@@ -1,0 +1,16 @@
+uuid: 22b40823-a035-4e78-b06a-15c4234affb2
+langcode: en
+status: true
+dependencies: {  }
+id: user
+label: user
+weight: 3
+is_admin: null
+permissions:
+  - 'add blood sugar record entities'
+  - 'add prescription entities'
+  - 'use text format basic_html'
+  - 'view published blood sugar record entities'
+  - 'view published prescription entities'
+  - 'view unpublished blood sugar record entities'
+  - 'view unpublished prescription entities'

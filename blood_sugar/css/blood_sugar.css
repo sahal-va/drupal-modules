@@ -1,0 +1,33 @@
+body {
+  font-size: 14px !important;
+}
+.view form .form-item {
+  margin: 0;
+  float: left;
+  width: 33%;
+}
+.view form .form-actions {
+  clear: none;
+  float: left;
+  padding: 0;
+  width: 33%;
+  margin: 0;
+}
+.view form input.button {
+  border-radius: 0.5em;
+  width: 40%;
+}
+.view form a.button {
+  border-radius: 0.5em;
+  width: 28%;
+  float: right;
+}
+.admin-top-btns {
+  display: flex;
+}
+.admin-top-btns a.button {
+  width: 45%;
+  padding: 0.5rem;
+  margin: 3rem;
+  border-radius: 0.5em;
+}

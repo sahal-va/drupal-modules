@@ -1,0 +1,42 @@
+# Blood sugar record routing definition
+blood_sugar_record.settings_tab:
+  route_name: blood_sugar_record.settings
+  title: 'Settings'
+  base_route: blood_sugar_record.settings
+
+entity.blood_sugar_record.canonical:
+  route_name: entity.blood_sugar_record.canonical
+  base_route: entity.blood_sugar_record.canonical
+  title: 'View'
+
+entity.blood_sugar_record.edit_form:
+  route_name: entity.blood_sugar_record.edit_form
+  base_route: entity.blood_sugar_record.canonical
+  title: 'Edit'
+
+entity.blood_sugar_record.delete_form:
+  route_name:  entity.blood_sugar_record.delete_form
+  base_route:  entity.blood_sugar_record.canonical
+  title: Delete
+  weight: 10
+# Prescription routing definition
+prescription_b_s.settings_tab:
+  route_name: prescription_b_s.settings
+  title: 'Settings'
+  base_route: prescription_b_s.settings
+
+entity.prescription_b_s.canonical:
+  route_name: entity.prescription_b_s.canonical
+  base_route: entity.prescription_b_s.canonical
+  title: 'View'
+
+entity.prescription_b_s.edit_form:
+  route_name: entity.prescription_b_s.edit_form
+  base_route: entity.prescription_b_s.canonical
+  title: 'Edit'
+
+entity.prescription_b_s.delete_form:
+  route_name:  entity.prescription_b_s.delete_form
+  base_route:  entity.prescription_b_s.canonical
+  title: Delete
+  weight: 10

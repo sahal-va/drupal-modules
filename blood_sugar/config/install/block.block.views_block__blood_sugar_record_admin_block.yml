@@ -1,0 +1,38 @@
+uuid: a2791481-6f3b-4f19-9932-76b09dbfbd13
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.blood_sugar_record
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - bartik
+id: views_block__blood_sugar_record_admin_block
+theme: bartik
+region: content
+weight: -3
+provider: null
+plugin: 'views_block:blood_sugar_record-admin_block'
+settings:
+  id: 'views_block:blood_sugar_record-admin_block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

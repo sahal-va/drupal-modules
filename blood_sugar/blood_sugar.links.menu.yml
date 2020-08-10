@@ -1,0 +1,48 @@
+
+# Blood sugar record menu items definition
+entity.blood_sugar_record.collection:
+  title: 'Blood sugar record list'
+  route_name: entity.blood_sugar_record.collection
+  description: 'List Blood sugar record entities'
+  parent: system.admin_structure
+  weight: 100
+
+blood_sugar_record.admin.structure.settings:
+  title: 'Blood sugar record settings'
+  description: 'Configure Blood sugar record entities'
+  route_name: blood_sugar_record.settings
+  parent: system.admin_structure
+
+# Blood sugar record menu items definition
+entity.blood_sugar_record.collection:
+  title: 'Blood sugar record list'
+  route_name: entity.blood_sugar_record.collection
+  description: 'List Blood sugar record entities'
+  parent: system.admin_structure
+  weight: 100
+
+blood_sugar_record.admin.structure.settings:
+  title: 'Blood sugar record settings'
+  description: 'Configure Blood sugar record entities'
+  route_name: blood_sugar_record.settings
+  parent: system.admin_structure
+
+# Prescription menu items definition
+entity.prescription_b_s.collection:
+  title: 'Prescription list'
+  route_name: entity.prescription_b_s.collection
+  description: 'List Prescription entities'
+  parent: system.admin_structure
+  weight: 100
+
+prescription_b_s.admin.structure.settings:
+  title: 'Prescription settings'
+  description: 'Configure Prescription entities'
+  route_name: prescription_b_s.settings
+  parent: system.admin_structure
+blood_sugar.settings_form:
+  title: 'SettingsForm'
+  route_name: blood_sugar.settings_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99

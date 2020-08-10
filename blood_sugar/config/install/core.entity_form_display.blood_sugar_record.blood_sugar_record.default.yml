@@ -1,0 +1,29 @@
+uuid: 9ef93508-4abc-4fcc-8684-ebb59994ac74
+langcode: en
+status: true
+dependencies:
+  module:
+    - blood_sugar
+id: blood_sugar_record.blood_sugar_record.default
+targetEntityType: blood_sugar_record
+bundle: blood_sugar_record
+mode: default
+content:
+  blood_sugar_value:
+    type: number
+    settings:
+      placeholder: 'Enter Blood Sugar value'
+    region: content
+    weight: 0
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

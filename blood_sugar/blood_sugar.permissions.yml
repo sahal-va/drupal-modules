@@ -1,0 +1,39 @@
+add blood sugar record entities:
+  title: 'Create new Blood sugar record entities'
+
+administer blood sugar record entities:
+  title: 'Administer Blood sugar record entities'
+  description: 'Allow to access the administration form to configure Blood sugar record entities.'
+  restrict access: true
+
+delete blood sugar record entities:
+  title: 'Delete Blood sugar record entities'
+
+edit blood sugar record entities:
+  title: 'Edit Blood sugar record entities'
+
+view published blood sugar record entities:
+  title: 'View published Blood sugar record entities'
+
+view unpublished blood sugar record entities:
+  title: 'View unpublished Blood sugar record entities'
+
+add prescription entities:
+  title: 'Create new Prescription entities'
+
+administer prescription entities:
+  title: 'Administer Prescription entities'
+  description: 'Allow to access the administration form to configure Prescription entities.'
+  restrict access: true
+
+delete prescription entities:
+  title: 'Delete Prescription entities'
+
+edit prescription entities:
+  title: 'Edit Prescription entities'
+
+view published prescription entities:
+  title: 'View published Prescription entities'
+
+view unpublished prescription entities:
+  title: 'View unpublished Prescription entities'

@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * @file
+ * Contains blood_sugar.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Url;
+use Drupal\views\ViewExecutable;
+use Drupal\blood_sugar\Entity\BloodSugarRecord;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function blood_sugar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the blood_sugar module.
+    case 'help.page.blood_sugar':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A custom module to store and manipulate on user&#039;&#039;s blood sugar record') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function blood_sugar_theme() {
+  return [
+    'blood_sugar' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function blood_sugar_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  $url = Url::fromRoute('blood_sugar.user_dashboard');
+  if ($route_name == 'entity.user.canonical') {
+    $data['tabs'][0]['blood_sugar.user_dashboard'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => t('My Space'),
+        'url' => $url,
+        'localized_options' => [
+          'attributes' => [
+            'title' => t('Go to Dashboard'),
+          ],
+        ],
+      ],
+    ];
+
+    $cacheability
+      ->addCacheTags([
+        'user.permissions',
+      ]);
+  }
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function blood_sugar_views_data() {
+  // Relationship b/w blood_sugar_prescription and file_managed.
+  $data['blood_sugar_prescription']['prescription_doc__target_id'] = [
+    'title' => t('Prescription Doc Id'),
+    'help' => t('Prescription Doc Id Relation'),
+    'field' => [
+      'id' => 'standard',
+    ],
+    'sort' => [
+      'id' => 'standard',
+    ],
+    'filter' => [
+      'id' => 'string',
+    ],
+    'relationship' => [
+      // Views name of the table to join to for the relationship.
+      'base' => 'file_managed',
+      // Database field name in the other table to join on.
+      'base field' => 'fid',
+      'id' => 'standard',
+      'label' => t('File Relationship'),
+    ],
+  ];
+  return $data;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function blood_sugar_views_pre_render(ViewExecutable &$view) {
+  if ($view->id() == 'blood_sugar_record' && $view->current_display == 'user_block') {
+    $entity = BloodSugarRecord::create();
+    $bsForm = \Drupal::service('entity.form_builder')->getForm($entity);
+    $bsForm['blood_sugar_value']['widget'][0]['value']['#title_display'] = 'invisible';
+    $bsForm['blood_sugar_value']['widget'][0]['value']['#description_display'] = 'invisible';
+    $bsForm['actions']['submit']['#value'] = t('Save BS value');
+    $bsForm['user_id']['#access'] = FALSE;
+    $html = \Drupal::service('renderer')->render($bsForm)->__toString();
+    $view->header['area']->options['content']['value'] = t($html);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function blood_sugar_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $storage = $form_state->getStorage();
+
+  // Making the reset action ajax for ajaxEnabled views.
+  if (!empty($storage['view']) && $storage['view']->ajaxEnabled()) {
+    if (isset($form['actions']['reset']) && isset($form['actions']['submit'])) {
+      $submit_id = $form['actions']['submit']['#id'];
+      $form['actions']['reset']['#attributes']['onclick'] = 'javascript:jQuery(this.form).clearForm();jQuery("#' . $submit_id . '").trigger("click");return false;';
+    }
+  }
+
+  if ($storage['view']->id() == 'blood_sugar_record_prescriptions' && $storage['view']->current_display == 'user_block') {
+    $form['actions']['#suffix'] =
+    '<a href="/admin/structure/prescription_b_s/add" class="use-ajax button" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:400}">Add Prescription</a>';
+  }
+
+}

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file prescription_b_s.html.twig
+ * Default theme implementation to present Prescription data.
+ *
+ * This template is used when viewing Prescription pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_prescription_b_s()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('prescription_b_s') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

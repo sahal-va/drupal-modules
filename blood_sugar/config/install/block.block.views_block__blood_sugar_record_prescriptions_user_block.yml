@@ -1,0 +1,39 @@
+uuid: 014a787e-5098-4e40-83f2-6e7829b83f50
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.blood_sugar_record_prescriptions
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - bartik
+id: views_block__blood_sugar_record_prescriptions_user_block
+theme: bartik
+region: content
+weight: -1
+provider: null
+plugin: 'views_block:blood_sugar_record_prescriptions-user_block'
+settings:
+  id: 'views_block:blood_sugar_record_prescriptions-user_block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /dashboard
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      user: user
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

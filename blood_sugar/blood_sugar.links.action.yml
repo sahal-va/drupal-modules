@@ -1,0 +1,10 @@
+entity.blood_sugar_record.add_form:
+  route_name: entity.blood_sugar_record.add_form
+  title: 'Add Blood sugar record'
+  appears_on:
+    - entity.blood_sugar_record.collection
+entity.prescription_b_s.add_form:
+  route_name: entity.prescription_b_s.add_form
+  title: 'Add Prescription'
+  appears_on:
+    - entity.prescription_b_s.collection
