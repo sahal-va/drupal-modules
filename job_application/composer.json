@@ -1,0 +1,13 @@
+{
+    "name": "job_application",
+    "type": "drupal-module",
+    "description": "Custom Entity for Storing Applications",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/job_application",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/job_application",
+        "source": "http://cgit.drupalcode.org/job_application",
+    },
+}

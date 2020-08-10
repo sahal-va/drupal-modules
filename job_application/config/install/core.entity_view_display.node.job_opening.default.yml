@@ -1,0 +1,53 @@
+uuid: 0d3cb4c0-aed8-49bc-bd37-6ebd63086eeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - field.field.node.job_opening.body
+    - field.field.node.job_opening.field_allowed_resume_file_format
+    - field.field.node.job_opening.field_comments
+    - field.field.node.job_opening.field_deadline_to_apply
+    - node.type.job_opening
+  module:
+    - comment
+    - datetime
+    - text
+    - user
+id: node.job_opening.default
+targetEntityType: node
+bundle: job_opening
+mode: default
+content:
+  body:
+    label: above
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_comments:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_deadline_to_apply:
+    weight: 1
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_allowed_resume_file_format: true

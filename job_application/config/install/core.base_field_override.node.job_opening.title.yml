@@ -1,0 +1,18 @@
+uuid: 92aae1d2-7544-49b1-8f6a-f94f13cbdc2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.job_opening
+id: node.job_opening.title
+field_name: title
+entity_type: node
+bundle: job_opening
+label: 'Job Title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,5 @@
+name: 'Job Application'
+type: module
+description: 'Custom Entity for Storing Applications'
+core: 8.x
+package: 'Custom'

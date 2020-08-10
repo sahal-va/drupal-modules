@@ -1,0 +1,31 @@
+uuid: e17e66da-1018-4bdc-8d3c-ef3c956e3a05
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.recieved_applications
+  module:
+    - system
+    - views
+  theme:
+    - bartik
+id: views_block__recieved_applications_block_2
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:recieved_applications-block_2'
+settings:
+  id: 'views_block:recieved_applications-block_2'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/jobs/*'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Contains job_application.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function job_application_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the job_application module.
+    case 'help.page.job_application':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom Entity for Storing Applications') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function job_application_theme() {
+  $theme = [];
+  $theme['application_table'] = [
+    'variables' => [
+      'data' => [],
+      'jobs' => [],
+    ],
+  ];
+
+  $theme['node__job_opening'] = [
+    'template' => 'node--job-opening',
+    'base hook' => 'node',
+    '#attached' => [
+      'library' => [
+        'job_application/job_application_library'
+      ],
+    ],
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function job_application_preprocess_node(&$variables) {
+  $ntype = $variables['node']->bundle();
+
+  if($ntype == 'job_opening') {
+    if(!in_array('administrator', \Drupal::currentUser()->getRoles())) {
+      $currentUser = \Drupal::currentUser();
+      $storage_handler = \Drupal::entityTypeManager()
+        ->getStorage('application');
+      $application = $storage_handler->loadByProperties(['job_id' => $variables['node']->id(), 'user_id' => $currentUser->id()]);
+      if (!empty($application)) {
+        $variables['applied'] = TRUE;
+      }
+      else {
+        $variables['applied'] = FALSE;
+      }
+    }
+    $variables['#attached']['library'][] = 'job_application/job_application_library';
+  }
+}

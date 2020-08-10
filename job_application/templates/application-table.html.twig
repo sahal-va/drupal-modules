@@ -1,0 +1,29 @@
+{#
+/**
+ * @file application-table.html.twig
+ * Theme implementation to render Application points data.
+ *
+ * Available variables:
+ * - data: An array of Points per Applicants for each Job.
+ */
+#}
+<div{{ attributes.addClass('application-table-wrapper') }}>
+  <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+      <th></th>
+    {% for job in jobs %}
+      <th>{{job}}</th>
+    {% endfor %}
+    </thead>
+    {% for user, points in data %}
+    <tr>
+      <td>{{user}}</td>
+      {% for point in points %}
+        <td>
+          {{point}}
+        </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>

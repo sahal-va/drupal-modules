@@ -1,0 +1,9 @@
+.apply-button-wrapper {
+  position:absolute;
+  right:0;
+  top: 0;
+}
+
+body {
+  font-size: 14px !important;
+}

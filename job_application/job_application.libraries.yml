@@ -1,0 +1,13 @@
+job_application_library:
+  version: 1.x
+  css:
+    theme:
+      css/job_application.css: {}
+      https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css: {external: TRUE}
+  js:
+    js/job_application.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.dialog.ajax
+    - core/jquery.form'
+

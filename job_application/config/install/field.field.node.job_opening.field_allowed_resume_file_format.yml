@@ -1,0 +1,21 @@
+uuid: 46d7b857-e0ca-4231-a233-2397572be6be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_allowed_resume_file_format
+    - node.type.job_opening
+id: node.job_opening.field_allowed_resume_file_format
+field_name: field_allowed_resume_file_format
+entity_type: node
+bundle: job_opening
+label: 'Allowed resume file format'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: pdf
+default_value_callback: ''
+settings: {  }
+field_type: string

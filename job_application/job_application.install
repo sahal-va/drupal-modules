@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Contains job_application.install.
+ */
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\Entity\Node;
+use Drupal\path_alias\Entity\PathAlias;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function job_application_install() {
+
+  // Create test Job objects.
+  for ($i = 1; $i <= 2; $i++) {
+    $node = Node::create([
+      'type'        => 'job_opening',
+      'title'       => 'Test Job Opening - ' . $i,
+    ]);
+    $node->set('field_allowed_resume_file_format', 'pdf doc');
+    $node->set('field_deadline_to_apply', date('Y-m-d\TH:i:s', strtotime('+1 day', time())));
+    $node->set('body', t("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."));
+    $node->set('created', time());
+    $node->setPublished();
+    $node->save();
+    $path_alias = PathAlias::create([
+      'path' => '/node/' . $node->id(),
+      'alias' => '/jobs/test-job-opening-' . $i,
+    ]);
+    $path_alias->save();
+    Drupal::messenger()->addMessage(t('Created test Job Opening with nid: %nid', [
+      '%nid' => $node->id(),
+    ]));
+  }
+
+  MenuLinkContent::create([
+    'title' => 'Application Points',
+    'link' => ['uri' => 'internal:/job_application/applications'],
+    'menu_name' => 'main',
+    'weight' => 10,
+  ])->save();
+
+  $role = Role::load('authenticated');
+  $role->grantPermission('add application entities');
+  $role->grantPermission('view own application entities');
+  $role->grantPermission('edit own application entities');
+  $role->save();
+}
+
+
+/**
+ * Implements hook_install().
+ */
+function job_application_uninstall() {
+  // Delete all job openings.
+  $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+    $nodes = $storage_handler->loadByProperties(['type' => 'job_opening']);
+    $storage_handler->delete($nodes);
+
+  // Delete content type.
+  $content_type = \Drupal::entityTypeManager()
+    ->getStorage('node_type')
+    ->load('job_opening');
+  $content_type->delete();
+}

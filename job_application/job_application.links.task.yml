@@ -1,0 +1,21 @@
+# Application routing definition
+application.settings_tab:
+  route_name: application.settings
+  title: 'Settings'
+  base_route: application.settings
+
+entity.application.canonical:
+  route_name: entity.application.canonical
+  base_route: entity.application.canonical
+  title: 'View'
+
+entity.application.edit_form:
+  route_name: entity.application.edit_form
+  base_route: entity.application.canonical
+  title: 'Edit'
+
+entity.application.delete_form:
+  route_name:  entity.application.delete_form
+  base_route:  entity.application.canonical
+  title: Delete
+  weight: 10

@@ -1,0 +1,14 @@
+
+# Application menu items definition
+entity.application.collection:
+  title: 'Application list'
+  route_name: entity.application.collection
+  description: 'List Application entities'
+  parent: system.admin_structure
+  weight: 100
+
+application.admin.structure.settings:
+  title: 'Application settings'
+  description: 'Configure Application entities'
+  route_name: application.settings
+  parent: system.admin_structure

@@ -1,0 +1,26 @@
+add application entities:
+  title: 'Create new Application entities'
+
+administer application entities:
+  title: 'Administer Application entities'
+  description: 'Allow to access the administration form to configure Application entities.'
+  restrict access: true
+
+delete application entities:
+  title: 'Delete Application entities'
+
+edit application entities:
+  title: 'Edit Application entities'
+
+edit own application entities:
+  title: 'Edit Own Application entities'
+
+view own application entities:
+  title: 'View Own Application entities'
+
+view published application entities:
+  title: 'View published Application entities'
+
+view unpublished application entities:
+  title: 'View unpublished Application entities'
+

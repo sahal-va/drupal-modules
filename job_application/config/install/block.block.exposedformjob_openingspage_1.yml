@@ -1,0 +1,31 @@
+uuid: 146062e5-faf2-4bec-b757-fabda10a69db
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.job_openings
+  module:
+    - system
+    - views
+  theme:
+    - bartik
+_core:
+  default_config_hash: ZVDKZn1mZTeCN6fXDN_aF15bvsbGuDWE5D0YNdh6ML0
+id: exposedformjob_openingspage_1
+theme: bartik
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:job_openings-page_1'
+settings:
+  id: 'views_exposed_filter_block:job_openings-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/job-openings"
+    negate: false
+    context_mapping: {  }

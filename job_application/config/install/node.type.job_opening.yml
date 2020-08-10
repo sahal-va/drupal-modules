@@ -1,0 +1,21 @@
+uuid: 22bd6427-53b8-4961-b0d6-67853d9e4f81
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+  enforced:
+    module:
+      - job_application
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Job Opening'
+type: job_opening
+description: 'Content type for Job Opening'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

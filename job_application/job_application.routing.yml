@@ -1,0 +1,31 @@
+job_application.application_form:
+  path: '/jobs/{job}/application/add'
+  defaults:
+    _entity_form: application.add
+    _title: 'ApplicationForm'
+  options:
+    parameters:
+      job:
+        type: entity:node
+  requirements:
+    _permission: 'add application entities'
+
+job_application.application_edit_form:
+  path: '/jobs/{job}/application/{application}/edit'
+  defaults:
+    _entity_form: application.edit
+    _title: 'ApplicationForm'
+  options:
+    parameters:
+      job:
+        type: entity:node
+  requirements:
+    _permission: 'edit own application entities'
+
+job_application.application_table:
+  path: '/job_application/applications'
+  defaults:
+    _controller: '\Drupal\job_application\Controller\ApplicationController::getTable'
+    _title: 'Application Points'
+  requirements:
+    _role: 'administrator'
